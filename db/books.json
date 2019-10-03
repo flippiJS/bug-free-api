@@ -1,1 +1,26 @@
-[{"id":1,"marca":"Harry potter 1","precio":"150","foto":null},{"id":2,"marca":"Harry potter 2","precio":"250","foto":"https://proxy.duckduckgo.com/iu/?u=http%3A%2F%2Ffantasyhyllan.se%2Fproduktbilder%2F9789188879042-harry-potter-och-fenixorden-1.jpg&f=1&nofb=1"},{"id":3,"marca":"Harry potter 3","precio":"350","foto":null}]
+[
+    {
+        "id": 1,
+        "fechaAlta": "Thu Oct 03 2019 17:09:14 GMT-0300 (GMT-03:00)",
+        "fechaActualizacion": "Thu Oct 03 2019 17:09:14 GMT-0300 (GMT-03:00)",
+        "marca": "Harry potter 1",
+        "precio": "150",
+        "foto": null
+    },
+    {
+        "id": 2,
+        "fechaAlta": "Thu Oct 03 2019 17:09:14 GMT-0300 (GMT-03:00)",
+        "fechaActualizacion": "Thu Oct 03 2019 17:09:14 GMT-0300 (GMT-03:00)",
+        "marca": "Harry potter 2",
+        "precio": "250",
+        "foto": "https://proxy.duckduckgo.com/iu/?u=http%3A%2F%2Ffantasyhyllan.se%2Fproduktbilder%2F9789188879042-harry-potter-och-fenixorden-1.jpg&f=1&nofb=1"
+    },
+    {
+        "id": 3,
+        "fechaAlta": "Thu Oct 03 2019 17:09:14 GMT-0300 (GMT-03:00)",
+        "fechaActualizacion": "Thu Oct 03 2019 17:09:14 GMT-0300 (GMT-03:00)",
+        "marca": "Harry potter 5",
+        "precio": "150",
+        "foto": null
+    }
+]
