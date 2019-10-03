@@ -64,7 +64,8 @@ router.delete('/:id', validations.validateInt, async (req, res) => {
     const id = req.params.id
     await book.deleteBook(id)
         .then(book => res.json({
-            message: `El libro #${id} ha sido borrado`
+            message: `El libro #${id} ha sido borrado`,
+            status: 200
         }))
         .catch(err => {
             if (err.status) {
