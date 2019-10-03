@@ -59,7 +59,7 @@ function deleteBook(id) {
     return new Promise((resolve, reject) => {
         utils.mustBeInArray(books, id)
             .then(() => {
-                books = books.filter(p => p.id !== id)
+                books = books.filter(p => p.id != id)
                 utils.writeJSONFile(filename, books)
                 resolve()
             })

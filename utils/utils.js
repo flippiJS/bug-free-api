@@ -15,7 +15,7 @@ function mustBeInArray(array, id) {
         const row = array.find(r => r.id == id)
         if (!row) {
             reject({
-                message: 'ID is not good',
+                message: 'No existe ese ID',
                 status: 404
             })
         }
@@ -24,7 +24,7 @@ function mustBeInArray(array, id) {
 }
 
 function writeJSONFile(filename, content) {
-    fs.writeFileSync(filename, JSON.stringify(content), 'UTF8', (err) => {
+    fs.writeFileSync(filename, JSON.stringify(content), 'utf8', (err) => {
         if (err) {
             console.info(err)
         }

@@ -62,7 +62,6 @@ router.put('/:id', validations.validateInt, validations.validateFields, async (r
 /* Delete a book */
 router.delete('/:id', validations.validateInt, async (req, res) => {
     const id = req.params.id
-
     await book.deleteBook(id)
         .then(book => res.json({
             message: `El libro #${id} ha sido borrado`
