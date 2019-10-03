@@ -2,18 +2,18 @@ function validateInt(req, res, next) {
     const id = req.params.id
 
     if (!Number.isInteger(parseInt(id))) {
-        res.status(400).json({ message: 'ID must be an integer' })
+        res.status(400).json({ message: 'El ID debe ser entero' })
     } else {
         next()
     }
 }
 
 function validateFields(req, res, next) {
-    const { title, content, tags } = req.body
-    if (title && content && tags) {
+    const { marca, precio, foto } = req.body
+    if (marca && precio && foto) {
         next()
     } else {
-        res.status(400).json({ message: 'fields are not good' })
+        res.status(400).json({ message: 'Faltan campos' })
     }
 }
 

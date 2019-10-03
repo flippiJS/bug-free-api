@@ -36,7 +36,7 @@ router.get('/:id', validations.validateInt, async (req, res) => {
 router.post('/', validations.validateFields, async (req, res) => {
     await book.insertBook(req.body)
         .then(book => res.status(201).json({
-            message: `The book #${book.id} has been created`,
+            message: `El libro #${book.id} ha sido creado`,
             content: book
         }))
         .catch(err => res.status(500).json({ message: err.message }))
@@ -48,7 +48,7 @@ router.put('/:id', validations.validateInt, validations.validateFields, async (r
 
     await book.updateBook(id, req.body)
         .then(book => res.json({
-            message: `The book #${id} has been updated`,
+            message: `El libro #${id} ha sido actualizado`,
             content: book
         }))
         .catch(err => {
@@ -65,7 +65,7 @@ router.delete('/:id', validations.validateInt, async (req, res) => {
 
     await book.deleteBook(id)
         .then(book => res.json({
-            message: `The book #${id} has been deleted`
+            message: `El libro #${id} ha sido borrado`
         }))
         .catch(err => {
             if (err.status) {

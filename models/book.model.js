@@ -6,7 +6,7 @@ function getBooks() {
     return new Promise((resolve, reject) => {
         if (books.length === 0) {
             reject({
-                message: 'no books available',
+                message: 'No hay libros disponibles',
                 status: 202
             })
         }
@@ -27,8 +27,8 @@ function insertBook(newBook) {
     return new Promise((resolve, reject) => {
         const id = { id: utils.getNewId(books) }
         const date = {
-            createdAt: utils.newDate(),
-            updatedAt: utils.newDate()
+            fechaAlta: utils.newDate(),
+            fechaActualizacion: utils.newDate()
         }
         newBook = { ...id, ...date, ...newBook }
         books.push(newBook)
@@ -44,8 +44,8 @@ function updateBook(id, newBook) {
                 const index = books.findIndex(p => p.id == Book.id)
                 id = { id: Book.id }
                 const date = {
-                    createdAt: Book.createdAt,
-                    updatedAt: utils.newDate()
+                    fechaAlta: Book.createdAt,
+                    fechaActualizacion: utils.newDate()
                 }
                 books[index] = { ...id, ...date, ...newBook }
                 utils.writeJSONFile(filename, books)

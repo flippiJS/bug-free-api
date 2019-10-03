@@ -1,18 +1,26 @@
 [
     {
         "id": 1,
-        "title": "First post",
-        "content": "Lorem Ipsum",
-        "tags": ["tag1", "tag2", "tag3"],
-        "createdAt": "Mon Aug 27 2018 15:16:17 GMT+0200 (CEST)",
-        "updatedAt": "Mon Aug 27 2018 15:16:17 GMT+0200 (CEST)"
+        "marca": "Harry potter 1",
+        "precio": "150",
+        "foto": null
     },
     {
         "id": 2,
-        "title": "Second post",
-        "content": "Lorem Ipsum again",
-        "tags": ["tag2", "tag4"],
-        "createdAt": "Mon Aug 27 2018 16:17:18 GMT+0200 (CEST)",
-        "updatedAt": "Mon Aug 27 2018 16:17:18 GMT+0200 (CEST)"
+        "marca": "Harry potter 2",
+        "precio": "250",
+        "foto": null
+    },
+    {
+        "id": 3,
+        "marca": "Harry potter 3",
+        "precio": "350",
+        "foto": null
+    },
+    {
+        "id": 4,
+        "marca": "Harry potter 4",
+        "precio": "550",
+        "foto": null
     }
 ]
