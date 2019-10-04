@@ -1,0 +1,81 @@
+[
+    {
+        "id": 1,
+        "nombre": "Harry potter 1",
+        "tipo": "otros",
+        "fechaEstreno": "12/09/2000",
+        "cantidadPublico": "1500000",
+        "foto": null,
+        "actorPrincipal": 8
+    },
+    {
+        "id": 2,
+        "nombre": "Harry potter 2",
+        "tipo": "otros",
+        "fechaEstreno": "12/09/2002",
+        "cantidadPublico": "3500000",
+        "foto": null,
+        "actorPrincipal": 7
+    },
+    {
+        "id": 3,
+        "nombre": "Harry potter 3",
+        "tipo": "otros",
+        "fechaEstreno": "12/09/2005",
+        "cantidadPublico": "5500000",
+        "foto": null
+    },
+    {
+        "id": 4,
+        "nombre": "Duro de Matar",
+        "tipo": "accion",
+        "fechaEstreno": "12/09/2000",
+        "cantidadPublico": "5500000",
+        "foto": null,
+        "actorPrincipal": 2
+    },
+    {
+        "id": 5,
+        "fechaAlta": "Thu Oct 03 2019 20:47:33 GMT-0300 (GMT-03:00)",
+        "fechaActualizacion": "Thu Oct 03 2019 20:47:33 GMT-0300 (GMT-03:00)",
+        "nombre": "Nemo",
+        "tipo": "otros",
+        "fechaEstreno": "15/04/1994",
+        "cantidadPublico": "1500000",
+        "foto": "https://images-na.ssl-images-amazon.com/images/I/71RpbizzQNL._SX342_.jpg",
+        "actorPrincipal": 2
+    },
+    {
+        "id": 6,
+        "fechaAlta": "Thu Oct 03 2019 21:02:31 GMT-0300 (GMT-03:00)",
+        "fechaActualizacion": "Thu Oct 03 2019 21:02:31 GMT-0300 (GMT-03:00)",
+        "nombre": "Loco por mary",
+        "tipo": "Accion",
+        "fechaEstreno": "25/05/1985",
+        "cantidadPublico": "1500000",
+        "foto": "https://images-na.ssl-images-amazon.com/images/I/71RpbizzQNL._SX342_.jpg",
+        "actorPrincipal": 5
+    },
+    {
+        "id": 7,
+        "fechaAlta": "Thu Oct 03 2019 21:06:54 GMT-0300 (GMT-03:00)",
+        "fechaActualizacion": "Thu Oct 03 2019 21:06:54 GMT-0300 (GMT-03:00)",
+        "nombre": "Click",
+        "tipo": "otros",
+        "fechaEstreno": "25/05/2019",
+        "cantidadPublico": "50000",
+        "foto": "https://images-na.ssl-images-amazon.com/images/I/71RpbizzQNL._SX342_.jpg",
+        "actorPrincipal":5
+    },
+    {
+        "id": 8,
+        "fechaAlta": "Thu Oct 03 2019 21:08:54 GMT-0300 (GMT-03:00)",
+        "fechaActualizacion": "Thu Oct 03 2019 21:08:54 GMT-0300 (GMT-03:00)",
+        "nombre": "Buscando a Nemo",
+        "tipo": "Otros",
+        "fechaEstreno": "25/08/2019",
+        "cantidadPublico": "500000",
+        "foto": "https://images-na.ssl-images-amazon.com/images/I/71RpbizzQNL._SX342_.jpg",
+        "actorPrincipal": 6
+    }
+]

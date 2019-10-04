@@ -17,7 +17,27 @@ function validateFields(req, res, next) {
     }
 }
 
+function validateFieldsFilm(req, res, next) {
+    const { nombre, tipo, fechaEstreno, cantidadPublico, foto } = req.body
+    if (nombre && tipo && fechaEstreno && cantidadPublico && foto) {
+        next()
+    } else {
+        res.status(400).json({ message: 'Faltan campos' })
+    }
+}
+
+function validateFieldsActor(req, res, next) {
+    const { nombre, apellido, nacionalidad, fechaNacimiento } = req.body
+    if (nombre && apellido && nacionalidad && fechaNacimiento) {
+        next()
+    } else {
+        res.status(400).json({ message: 'Faltan campos' })
+    }
+}
+
 module.exports = {
     validateInt,
-    validateFields
+    validateFields,
+    validateFieldsFilm,
+    validateFieldsActor
 }
