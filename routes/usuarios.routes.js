@@ -17,6 +17,22 @@ router.get('/', async (req, res) => {
         })
 })
 
+
+/* All profesores */
+router.get('/profesores', async (req, res) => {
+    await usuario.getUsuarios()
+        .then(usuarios => {
+            res.json(usuarios.filter((u)=> u.tipo == 2));
+        })
+        .catch(err => {
+            if (err.status) {
+                res.status(err.status).json({ message: err.message })
+            } else {
+                res.status(500).json({ message: err.message })
+            }
+        })
+})
+
 /* A usuario by id */
 router.get('/:id', validations.validateInt, async (req, res) => {
     const id = req.params.id
@@ -67,6 +83,21 @@ router.delete('/:id', validations.validateInt, async (req, res) => {
         .then(usuario => res.json({
             message: `Usuario #${id} ha sido borrado`,
             status: 200
+        }))
+        .catch(err => {
+            if (err.status) {
+                res.status(err.status).json({ message: err.message })
+            }
+            res.status(500).json({ message: err.message })
+        })
+})
+
+/* login a usuario */
+router.post('/login', async (req, res) => {
+    await usuario.loginUsuario(req.body)
+        .then(usuario => res.json({
+            message: `OK`,
+            content: usuario
         }))
         .catch(err => {
             if (err.status) {

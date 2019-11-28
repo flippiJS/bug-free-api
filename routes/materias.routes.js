@@ -33,7 +33,7 @@ router.get('/:id', validations.validateInt, async (req, res) => {
 })
 
 /* Insert a new materia */
-router.post('/', validations.validateFields, async (req, res) => {
+router.post('/', validations.validateFieldsMateria, async (req, res) => {
     await materia.insertMateria(req.body)
         .then(materia => res.status(201).json({
             message: `Materia #${materia.id} ha sido creado`,
@@ -43,7 +43,7 @@ router.post('/', validations.validateFields, async (req, res) => {
 })
 
 /* Update a materia */
-router.put('/:id', validations.validateInt, validations.validateFields, async (req, res) => {
+router.put('/:id', validations.validateInt, validations.validateFieldsMateria, async (req, res) => {
     const id = req.params.id
 
     await materia.updateMateria(id, req.body)

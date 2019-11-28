@@ -75,10 +75,19 @@ function deleteUsuario(id) {
     })
 }
 
+function loginUsuario(form) {
+    return new Promise((resolve, reject) => {
+        const index = usuarios.findIndex(p => p.mail == form.mail && p.clave == form.clave);
+        if(index > -1) resolve(usuarios[index]);
+        else reject(false);    
+    })
+}
+
 module.exports = {
     insertUsuario,
     getUsuarios,
     getUsuario,
     updateUsuario,
-    deleteUsuario
+    deleteUsuario,
+    loginUsuario
 }

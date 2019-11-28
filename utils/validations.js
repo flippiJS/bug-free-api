@@ -8,9 +8,9 @@ function validateInt(req, res, next) {
     }
 }
 
-function validateFields(req, res, next) {
-    const { marca, precio, foto } = req.body
-    if (marca && precio && foto) {
+function validateFieldsMateria(req, res, next) {
+    const { nombre, cuatrimestre, cupos, profesor } = req.body
+    if (nombre && cuatrimestre && cupos && profesor) {
         next()
     } else {
         res.status(400).json({ message: 'Faltan campos' })
@@ -37,7 +37,7 @@ function validateFieldsUsuario(req, res, next) {
 
 module.exports = {
     validateInt,
-    validateFields,
+    validateFieldsMateria,
     validateFieldsFilm,
     validateFieldsUsuario
 

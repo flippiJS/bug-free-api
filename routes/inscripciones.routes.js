@@ -33,7 +33,7 @@ router.get('/:id', validations.validateInt, async (req, res) => {
 })
 
 /* Insert a new incripcion */
-router.post('/', validations.validateFields, async (req, res) => {
+router.post('/', validations.validateFieldsMateria, async (req, res) => {
     await incripcion.insertIncripcion(req.body)
         .then(incripcion => res.status(201).json({
             message: `El libro #${incripcion.id} ha sido creado`,
@@ -43,7 +43,7 @@ router.post('/', validations.validateFields, async (req, res) => {
 })
 
 /* Update a incripcion */
-router.put('/:id', validations.validateInt, validations.validateFields, async (req, res) => {
+router.put('/:id', validations.validateInt, validations.validateFieldsMateria, async (req, res) => {
     const id = req.params.id
 
     await incripcion.updateIncripcion(id, req.body)
