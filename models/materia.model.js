@@ -1,6 +1,7 @@
 const filename = './db/materias.json';
 const utils = require('../utils/utils.js');
 let materias = require('../db/materias.json');
+const incripcion = require('../models/inscripcion.model');
 
 function getMaterias() {
     return new Promise((resolve, reject) => {
@@ -15,16 +16,26 @@ function getMaterias() {
     })
 }
 
-function getMateriasDisponibles() {
+function getMateriasDisponibles(id) {
     return new Promise((resolve, reject) => {
+        let materiasDispo = materias.slice();
         if (materias.length === 0) {
             reject({
                 message: 'No hay materias disponibles',
                 status: 202
             })
         }
+        incripcion.getInscripciones()
+            .then(incripcions => {
+                const list = incripcions.filter((i) => i.usuario.id == id);
+                materiasDispo = materiasDispo.filter((m, index) => {
+                    list.map((l) => {
+                        if (l.materia == m.id) materiasDispo.splice(index, 1);
+                    });
+                });
+            })
 
-        resolve(materias)
+        resolve(materiasDispo)
     })
 }
 
