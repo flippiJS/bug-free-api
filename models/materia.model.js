@@ -85,5 +85,6 @@ module.exports = {
     getMaterias,
     getMateria,
     updateMateria,
-    deleteMateria
+    deleteMateria,
+    getMateriasDisponibles
 }

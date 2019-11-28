@@ -34,7 +34,7 @@ router.get('/:id', validations.validateInt, async (req, res) => {
 
 /* materias disponibles */
 router.post('/disponibles', async (req, res) => {
-    await materia.getMaterias()
+    await materia.getMateriasDisponibles(req.body.id)
         .then(materias => res.json(materias))
         .catch(err => {
             if (err.status) {
