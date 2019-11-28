@@ -33,10 +33,10 @@ router.get('/:id', validations.validateInt, async (req, res) => {
 })
 
 /* Insert a new incripcion */
-router.post('/', validations.validateFieldsMateria, async (req, res) => {
-    await incripcion.insertIncripcion(req.body)
+router.post('/', async (req, res) => {
+    await incripcion.insertInscripcion(req.body)
         .then(incripcion => res.status(201).json({
-            message: `El libro #${incripcion.id} ha sido creado`,
+            message: `Incripcion #${incripcion.id} ha sido creado`,
             content: incripcion
         }))
         .catch(err => res.status(500).json({ message: err.message }))
@@ -48,7 +48,7 @@ router.put('/:id', validations.validateInt, validations.validateFieldsMateria, a
 
     await incripcion.updateIncripcion(id, req.body)
         .then(incripcion => res.json({
-            message: `El libro #${id} ha sido actualizado`,
+            message: `Incripcion #${id} ha sido actualizado`,
             content: incripcion
         }))
         .catch(err => {
@@ -64,7 +64,7 @@ router.delete('/:id', validations.validateInt, async (req, res) => {
     const id = req.params.id
     await incripcion.deleteIncripcion(id)
         .then(incripcion => res.json({
-            message: `El libro #${id} ha sido borrado`,
+            message: `Incripcion #${id} ha sido borrado`,
             status: 200
         }))
         .catch(err => {

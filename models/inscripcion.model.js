@@ -2,11 +2,11 @@ const filename = './db/inscripciones.json';
 const utils = require('../utils/utils.js');
 let inscripciones = require('../db/inscripciones.json');
 
-function getIns() {
+function getInscripciones() {
     return new Promise((resolve, reject) => {
         if (inscripciones.length === 0) {
             reject({
-                message: 'No hay libros disponibles',
+                message: 'No hay incripciones disponibles',
                 status: 202
             })
         }
@@ -15,7 +15,7 @@ function getIns() {
     })
 }
 
-function getIn(id) {
+function getInscripcion(id) {
     return new Promise((resolve, reject) => {
         utils.mustBeInArray(inscripciones, id)
             .then(In => resolve(In))
@@ -23,7 +23,7 @@ function getIn(id) {
     })
 }
 
-function insertIn(newIn) {
+function insertInscripcion(newIn) {
     return new Promise((resolve, reject) => {
         const id = { id: utils.getNewId(inscripciones) }
         const date = {
@@ -37,7 +37,7 @@ function insertIn(newIn) {
     })
 }
 
-function updateIn(id, newIn) {
+function updateInscripcion(id, newIn) {
     return new Promise((resolve, reject) => {
         utils.mustBeInArray(inscripciones, id)
             .then(In => {
@@ -55,7 +55,7 @@ function updateIn(id, newIn) {
     })
 }
 
-function deleteIn(id) {
+function deleteInscripcion(id) {
     return new Promise((resolve, reject) => {
         utils.mustBeInArray(inscripciones, id)
             .then(() => {
@@ -68,9 +68,9 @@ function deleteIn(id) {
 }
 
 module.exports = {
-    insertIn,
-    getIns,
-    getIn,
-    updateIn,
-    deleteIn
+    insertInscripcion,
+    getInscripciones,
+    getInscripcion,
+    updateInscripcion,
+    deleteInscripcion
 }

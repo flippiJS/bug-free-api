@@ -6,7 +6,20 @@ function getMaterias() {
     return new Promise((resolve, reject) => {
         if (materias.length === 0) {
             reject({
-                message: 'No hay libros disponibles',
+                message: 'No hay materias disponibles',
+                status: 202
+            })
+        }
+
+        resolve(materias)
+    })
+}
+
+function getMateriasDisponibles() {
+    return new Promise((resolve, reject) => {
+        if (materias.length === 0) {
+            reject({
+                message: 'No hay materias disponibles',
                 status: 202
             })
         }
