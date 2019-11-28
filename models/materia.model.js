@@ -1,66 +1,66 @@
-const filename = './db/books.json';
+const filename = './db/materias.json';
 const utils = require('../utils/utils.js');
-let books = require('../db/books.json');
+let materias = require('../db/materias.json');
 
-function getBooks() {
+function getMaterias() {
     return new Promise((resolve, reject) => {
-        if (books.length === 0) {
+        if (materias.length === 0) {
             reject({
                 message: 'No hay libros disponibles',
                 status: 202
             })
         }
 
-        resolve(books)
+        resolve(materias)
     })
 }
 
-function getBook(id) {
+function getMateria(id) {
     return new Promise((resolve, reject) => {
-        utils.mustBeInArray(books, id)
-            .then(Book => resolve(Book))
+        utils.mustBeInArray(materias, id)
+            .then(Materia => resolve(Materia))
             .catch(err => reject(err))
     })
 }
 
-function insertBook(newBook) {
+function insertMateria(newMateria) {
     return new Promise((resolve, reject) => {
-        const id = { id: utils.getNewId(books) }
+        const id = { id: utils.getNewId(materias) }
         const date = {
             fechaAlta: utils.newDate(),
             fechaActualizacion: utils.newDate()
         }
-        newBook = { ...id, ...date, ...newBook }
-        books.push(newBook)
-        utils.writeJSONFile(filename, books)
-        resolve(newBook)
+        newMateria = { ...id, ...date, ...newMateria }
+        materias.push(newMateria)
+        utils.writeJSONFile(filename, materias)
+        resolve(newMateria)
     })
 }
 
-function updateBook(id, newBook) {
+function updateMateria(id, newMateria) {
     return new Promise((resolve, reject) => {
-        utils.mustBeInArray(books, id)
-            .then(Book => {
-                const index = books.findIndex(p => p.id == Book.id)
-                id = { id: Book.id }
+        utils.mustBeInArray(materias, id)
+            .then(Materia => {
+                const index = materias.findIndex(p => p.id == Materia.id)
+                id = { id: Materia.id }
                 const date = {
-                    fechaAlta: Book.createdAt,
+                    fechaAlta: Materia.createdAt,
                     fechaActualizacion: utils.newDate()
                 }
-                books[index] = { ...id, ...date, ...newBook }
-                utils.writeJSONFile(filename, books)
-                resolve(books[index])
+                materias[index] = { ...id, ...date, ...newMateria }
+                utils.writeJSONFile(filename, materias)
+                resolve(materias[index])
             })
             .catch(err => reject(err))
     })
 }
 
-function deleteBook(id) {
+function deleteMateria(id) {
     return new Promise((resolve, reject) => {
-        utils.mustBeInArray(books, id)
+        utils.mustBeInArray(materias, id)
             .then(() => {
-                books = books.filter(p => p.id != id)
-                utils.writeJSONFile(filename, books)
+                materias = materias.filter(p => p.id != id)
+                utils.writeJSONFile(filename, materias)
                 resolve()
             })
             .catch(err => reject(err))
@@ -68,9 +68,9 @@ function deleteBook(id) {
 }
 
 module.exports = {
-    insertBook,
-    getBooks,
-    getBook,
-    updateBook,
-    deleteBook
+    insertMateria,
+    getMaterias,
+    getMateria,
+    updateMateria,
+    deleteMateria
 }

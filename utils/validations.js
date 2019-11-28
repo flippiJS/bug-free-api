@@ -26,7 +26,7 @@ function validateFieldsFilm(req, res, next) {
     }
 }
 
-function validateFieldsActor(req, res, next) {
+function validateFieldsUsuario(req, res, next) {
     const { nombre, apellido, nacionalidad, fechaNacimiento } = req.body
     if (nombre && apellido && nacionalidad && fechaNacimiento) {
         next()
@@ -39,5 +39,6 @@ module.exports = {
     validateInt,
     validateFields,
     validateFieldsFilm,
-    validateFieldsActor
+    validateFieldsUsuario
+
 }

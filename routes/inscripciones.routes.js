@@ -1,13 +1,13 @@
 const express = require('express');
 const router = express.Router();
 
-const book = require('../models/book.model');
+const incripcion = require('../models/inscripcion.model');
 const validations = require('../utils/validations');
 
-/* All books */
+/* All incripcions */
 router.get('/', async (req, res) => {
-    await book.getBooks()
-        .then(books => res.json(books))
+    await incripcion.getIncripcions()
+        .then(incripcions => res.json(incripcions))
         .catch(err => {
             if (err.status) {
                 res.status(err.status).json({ message: err.message })
@@ -17,12 +17,12 @@ router.get('/', async (req, res) => {
         })
 })
 
-/* A book by id */
+/* A incripcion by id */
 router.get('/:id', validations.validateInt, async (req, res) => {
     const id = req.params.id
 
-    await book.getBook(id)
-        .then(book => res.json(book))
+    await incripcion.getIncripcion(id)
+        .then(incripcion => res.json(incripcion))
         .catch(err => {
             if (err.status) {
                 res.status(err.status).json({ message: err.message })
@@ -32,24 +32,24 @@ router.get('/:id', validations.validateInt, async (req, res) => {
         })
 })
 
-/* Insert a new book */
+/* Insert a new incripcion */
 router.post('/', validations.validateFields, async (req, res) => {
-    await book.insertBook(req.body)
-        .then(book => res.status(201).json({
-            message: `El libro #${book.id} ha sido creado`,
-            content: book
+    await incripcion.insertIncripcion(req.body)
+        .then(incripcion => res.status(201).json({
+            message: `El libro #${incripcion.id} ha sido creado`,
+            content: incripcion
         }))
         .catch(err => res.status(500).json({ message: err.message }))
 })
 
-/* Update a book */
+/* Update a incripcion */
 router.put('/:id', validations.validateInt, validations.validateFields, async (req, res) => {
     const id = req.params.id
 
-    await book.updateBook(id, req.body)
-        .then(book => res.json({
+    await incripcion.updateIncripcion(id, req.body)
+        .then(incripcion => res.json({
             message: `El libro #${id} ha sido actualizado`,
-            content: book
+            content: incripcion
         }))
         .catch(err => {
             if (err.status) {
@@ -59,11 +59,11 @@ router.put('/:id', validations.validateInt, validations.validateFields, async (r
         })
 })
 
-/* Delete a book */
+/* Delete a incripcion */
 router.delete('/:id', validations.validateInt, async (req, res) => {
     const id = req.params.id
-    await book.deleteBook(id)
-        .then(book => res.json({
+    await incripcion.deleteIncripcion(id)
+        .then(incripcion => res.json({
             message: `El libro #${id} ha sido borrado`,
             status: 200
         }))

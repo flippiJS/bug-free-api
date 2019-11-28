@@ -1,13 +1,13 @@
 const express = require('express');
 const router = express.Router();
 
-const book = require('../models/book.model');
+const materia = require('../models/materia.model');
 const validations = require('../utils/validations');
 
-/* All books */
+/* All materias */
 router.get('/', async (req, res) => {
-    await book.getBooks()
-        .then(books => res.json(books))
+    await materia.getMaterias()
+        .then(materias => res.json(materias))
         .catch(err => {
             if (err.status) {
                 res.status(err.status).json({ message: err.message })
@@ -17,12 +17,12 @@ router.get('/', async (req, res) => {
         })
 })
 
-/* A book by id */
+/* A materia by id */
 router.get('/:id', validations.validateInt, async (req, res) => {
     const id = req.params.id
 
-    await book.getBook(id)
-        .then(book => res.json(book))
+    await materia.getMateria(id)
+        .then(materia => res.json(materia))
         .catch(err => {
             if (err.status) {
                 res.status(err.status).json({ message: err.message })
@@ -32,24 +32,24 @@ router.get('/:id', validations.validateInt, async (req, res) => {
         })
 })
 
-/* Insert a new book */
+/* Insert a new materia */
 router.post('/', validations.validateFields, async (req, res) => {
-    await book.insertBook(req.body)
-        .then(book => res.status(201).json({
-            message: `El libro #${book.id} ha sido creado`,
-            content: book
+    await materia.insertMateria(req.body)
+        .then(materia => res.status(201).json({
+            message: `Materia #${materia.id} ha sido creado`,
+            content: materia
         }))
         .catch(err => res.status(500).json({ message: err.message }))
 })
 
-/* Update a book */
+/* Update a materia */
 router.put('/:id', validations.validateInt, validations.validateFields, async (req, res) => {
     const id = req.params.id
 
-    await book.updateBook(id, req.body)
-        .then(book => res.json({
-            message: `El libro #${id} ha sido actualizado`,
-            content: book
+    await materia.updateMateria(id, req.body)
+        .then(materia => res.json({
+            message: `Materia #${id} ha sido actualizado`,
+            content: materia
         }))
         .catch(err => {
             if (err.status) {
@@ -59,12 +59,12 @@ router.put('/:id', validations.validateInt, validations.validateFields, async (r
         })
 })
 
-/* Delete a book */
+/* Delete a materia */
 router.delete('/:id', validations.validateInt, async (req, res) => {
     const id = req.params.id
-    await book.deleteBook(id)
-        .then(book => res.json({
-            message: `El libro #${id} ha sido borrado`,
+    await materia.deleteMateria(id)
+        .then(materia => res.json({
+            message: `Materia #${id} ha sido borrado`,
             status: 200
         }))
         .catch(err => {

@@ -1,66 +1,74 @@
-const filename = './db/actors.json';
+const filename = './db/usuarios.json';
 const utils = require('../utils/utils.js');
-let actors = require('../db/actors.json');
+let usuarios = require('../db/usuarios.json');
 
-function getActors() {
+/*
+  public id: number;
+  public email: string;
+  public clave: string;
+  public rol: number;
+  public foto: string;
+*/
+
+function getUsuarios() {
     return new Promise((resolve, reject) => {
-        if (actors.length === 0) {
+        if (usuarios.length === 0) {
             reject({
-                message: 'No hay actores disponibles',
+                message: 'No hay usuarios disponibles',
                 status: 202
             })
         }
 
-        resolve(actors)
+        resolve(usuarios)
     })
 }
 
-function getActor(id) {
+function getUsuario(id) {
     return new Promise((resolve, reject) => {
-        utils.mustBeInArray(actors, id)
+        utils.mustBeInArray(usuarios, id)
             .then(actor => resolve(actor))
             .catch(err => reject(err))
     })
 }
 
-function insertActor(newactor) {
+function insertUsuario(newactor) {
     return new Promise((resolve, reject) => {
-        const id = { id: utils.getNewId(actors) }
+        const id = { id: utils.getNewId(usuarios) }
         const date = {
             fechaAlta: utils.newDate(),
             fechaActualizacion: utils.newDate()
         }
         newactor = { ...id, ...date, ...newactor }
-        actors.push(newactor)
-        utils.writeJSONFile(filename, actors)
+        usuarios.push(newactor)
+        utils.writeJSONFile(filename, usuarios)
         resolve(newactor)
     })
 }
 
-function updateActor(id, newactor) {
+function updateUsuario(id, newactor) {
     return new Promise((resolve, reject) => {
-        utils.mustBeInArray(actors, id)
+        utils.mustBeInArray(usuarios, id)
             .then(actor => {
-                const index = actors.findIndex(p => p.id == actor.id)
+                const index = usuarios.findIndex(p => p.id == actor.id)
                 id = { id: actor.id }
                 const date = {
                     fechaAlta: actor.createdAt,
                     fechaActualizacion: utils.newDate()
                 }
-                actors[index] = { ...id, ...date, ...newactor }
-                utils.writeJSONFile(filename, actors)
-                resolve(actors[index])
+                usuarios[index] = { ...id, ...date, ...newactor }
+                utils.writeJSONFile(filename, usuarios)
+                resolve(usuarios[index])
             })
             .catch(err => reject(err))
     })
 }
 
-function deleteActor(id) {
+function deleteUsuario(id) {
     return new Promise((resolve, reject) => {
-        utils.mustBeInArray(actors, id)
+        utils.mustBeInArray(usuarios, id)
             .then(() => {
-                actors = actors.filter(p => p.id != id)
-                utils.writeJSONFile(filename, actors)
+                usuarios = usuarios.filter(p => p.id != id)
+                utils.writeJSONFile(filename, usuarios)
                 resolve()
             })
             .catch(err => reject(err))
@@ -68,9 +76,9 @@ function deleteActor(id) {
 }
 
 module.exports = {
-    insertActor,
-    getActors,
-    getActor,
-    updateActor,
-    deleteActor
+    insertUsuario,
+    getUsuarios,
+    getUsuario,
+    updateUsuario,
+    deleteUsuario
 }
