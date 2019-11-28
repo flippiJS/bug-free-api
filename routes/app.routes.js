@@ -2,14 +2,14 @@ const express = require('express');
 const router = express.Router();
 
 // Import routes
-const books = require('./books.routes');
-const films = require('./films.routes');
-const actors = require('./actors.routes');
+const materias = require('./materias.routes');
+const usuarios = require('./usuarios.routes');
+const incripciones = require('./incripciones.routes');
 
 // Use routes
-router.use('/api/v1/books', books);
-router.use('/api/v1/films', films);
-router.use('/api/v1/actors', actors);
+router.use('/api/v1/materias', materias);
+router.use('/api/v1/usuarios', usuarios);
+router.use('/api/v1/incripciones', incripciones);
 
 // Alive
 router.get('/', async (req, res) => {

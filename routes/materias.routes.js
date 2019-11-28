@@ -1,13 +1,13 @@
 const express = require('express');
 const router = express.Router();
 
-const film = require('../models/film.model');
+const book = require('../models/book.model');
 const validations = require('../utils/validations');
 
-/* All films */
+/* All books */
 router.get('/', async (req, res) => {
-    await film.getFilms()
-        .then(films => res.json(films))
+    await book.getBooks()
+        .then(books => res.json(books))
         .catch(err => {
             if (err.status) {
                 res.status(err.status).json({ message: err.message })
@@ -17,12 +17,12 @@ router.get('/', async (req, res) => {
         })
 })
 
-/* A film by id */
+/* A book by id */
 router.get('/:id', validations.validateInt, async (req, res) => {
     const id = req.params.id
 
-    await film.getFilm(id)
-        .then(film => res.json(film))
+    await book.getBook(id)
+        .then(book => res.json(book))
         .catch(err => {
             if (err.status) {
                 res.status(err.status).json({ message: err.message })
@@ -32,24 +32,24 @@ router.get('/:id', validations.validateInt, async (req, res) => {
         })
 })
 
-/* Insert a new film */
-router.post('/', validations.validateFieldsFilm, async (req, res) => {
-    await film.insertFilm(req.body)
-        .then(film => res.status(201).json({
-            message: `La pelicula #${film.id} ha sido creado`,
-            content: film
+/* Insert a new book */
+router.post('/', validations.validateFields, async (req, res) => {
+    await book.insertBook(req.body)
+        .then(book => res.status(201).json({
+            message: `El libro #${book.id} ha sido creado`,
+            content: book
         }))
         .catch(err => res.status(500).json({ message: err.message }))
 })
 
-/* Update a film */
-router.put('/:id', validations.validateInt, validations.validateFieldsFilm, async (req, res) => {
+/* Update a book */
+router.put('/:id', validations.validateInt, validations.validateFields, async (req, res) => {
     const id = req.params.id
 
-    await film.updateFilm(id, req.body)
-        .then(film => res.json({
-            message: `La pelicula #${id} ha sido actualizado`,
-            content: film
+    await book.updateBook(id, req.body)
+        .then(book => res.json({
+            message: `El libro #${id} ha sido actualizado`,
+            content: book
         }))
         .catch(err => {
             if (err.status) {
@@ -59,12 +59,12 @@ router.put('/:id', validations.validateInt, validations.validateFieldsFilm, asyn
         })
 })
 
-/* Delete a film */
+/* Delete a book */
 router.delete('/:id', validations.validateInt, async (req, res) => {
     const id = req.params.id
-    await film.deleteFilm(id)
-        .then(film => res.json({
-            message: `La pelicula #${id} ha sido borrado`,
+    await book.deleteBook(id)
+        .then(book => res.json({
+            message: `El libro #${id} ha sido borrado`,
             status: 200
         }))
         .catch(err => {
