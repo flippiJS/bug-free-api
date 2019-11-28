@@ -62,6 +62,35 @@ function getMateriasPorAlumnos(id) {
     })
 }
 
+function getAlumnoPorMateria(id) {
+    return new Promise((resolve, reject) => {
+        let materiasDispo = [];
+        let insc = [];
+        if (materias.length === 0) {
+            reject({
+                message: 'No hay materias disponibles',
+                status: 202
+            })
+        }
+        incripcion.getInscripciones()
+            .then(ins => {
+                insc = ins;
+                materiasDispo = materias.filter((m) => m.profesor.id == id);
+
+                materiasDispo = materiasDispo.map((m) => {
+                    m.alumnos = [];
+                    insc.map((i)=>{
+                        console.log(i);
+                        if(m.id == i.materia) {
+                            m.alumnos.push(i.usuario);
+                        }
+                    })
+                    resolve(materiasDispo);
+                });
+            })
+    })
+}
+
 function getMateria(id) {
     return new Promise((resolve, reject) => {
         utils.mustBeInArray(materias, id)
@@ -121,5 +150,6 @@ module.exports = {
     updateMateria,
     deleteMateria,
     getMateriasDisponibles,
-    getMateriasPorAlumnos
+    getMateriasPorAlumnos,
+    getAlumnoPorMateria
 }

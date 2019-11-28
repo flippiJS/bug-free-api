@@ -58,6 +58,19 @@ router.post('/porAlumno', async (req, res) => {
         })
 })
 
+/* alumno por mnateria */
+router.post('/alumnosMateria', async (req, res) => {
+    await materia.getAlumnoPorMateria(req.body.id)
+        .then(materias => res.json(materias))
+        .catch(err => {
+            if (err.status) {
+                res.status(err.status).json({ message: err.message })
+            } else {
+                res.status(500).json({ message: err.message })
+            }
+        })
+})
+
 /* Insert a new materia */
 router.post('/', validations.validateFieldsMateria, async (req, res) => {
     await materia.insertMateria(req.body)
