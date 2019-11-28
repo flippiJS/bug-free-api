@@ -27,8 +27,8 @@ function validateFieldsFilm(req, res, next) {
 }
 
 function validateFieldsUsuario(req, res, next) {
-    const { nombre, apellido, nacionalidad, fechaNacimiento } = req.body
-    if (nombre && apellido && nacionalidad && fechaNacimiento) {
+    const { nombre, clave, mail, foto, tipo } = req.body
+    if (nombre && clave && mail && foto && tipo) {
         next()
     } else {
         res.status(400).json({ message: 'Faltan campos' })
