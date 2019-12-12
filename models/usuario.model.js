@@ -67,9 +67,13 @@ function deleteUsuario(id) {
     return new Promise((resolve, reject) => {
         utils.mustBeInArray(usuarios, id)
             .then(() => {
-                usuarios = usuarios.filter(p => p.id != id)
+                const index = usuarios.findIndex(p => p.id == id)
+                const date = {
+                    fechaBaja: utils.newDate()
+                }
+                usuarios[index] = {...usuarios[index],...date}
                 utils.writeJSONFile(filename, usuarios)
-                resolve()
+                resolve(usuarios[index])
             })
             .catch(err => reject(err))
     })
